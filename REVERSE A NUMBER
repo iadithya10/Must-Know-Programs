@@ -1,0 +1,155 @@
+Reverse a Number
+Example
+
+Input: 1234
+Output: 4321
+
+
+🧠 LOGIC 
+
+Take last digit using % 10
+
+Remove last digit using // 10
+
+Add last digit to reversed number
+
+CODE
+
+def reverse_number(num):
+    rev = 0
+    while num > 0:
+        digit = num % 10
+        rev = rev * 10 + digit
+        num = num // 10
+    return rev
+
+
+num = int(input("Enter number: "))
+result = reverse_number(num)
+print("Reversed number:", result)
+
+
+
+🧠 HOW FUNCTION WORKS
+
+num → input parameter
+
+rev → stores reversed value
+
+Function returns reversed number
+
+⏱ TIME & SPACE
+
+Time Complexity: O(n)
+
+Space Complexity: O(1)
+
+
+
+
+VARIATION 1: Reverse a STRING (Using Slicing)
+
+Python has slicing → fastest & cleanest way.
+
+CODE
+
+def reverse_string(s):
+    return s[::-1]
+
+
+text = input("Enter string: ")
+print("Reversed string:", reverse_string(text))
+
+⏱ COMPLEXITY
+
+Time: O(n)
+
+Space: O(n)
+
+
+VARIATION 2: Reverse a NEGATIVE NUMBER
+
+🧠 LOGIC
+
+Store sign (- or +)
+
+Reverse the absolute value
+
+Attach sign back
+
+CODE
+
+
+def reverse_number_with_sign(num):
+    sign = -1 if num < 0 else 1
+    num = abs(num)
+
+    rev = 0
+    while num > 0:
+        rev = rev * 10 + num % 10
+        num //= 10
+
+    return sign * rev
+
+
+num = int(input("Enter number: "))
+print("Reversed number:", reverse_number_with_sign(num))
+
+
+🔍 EXAMPLE
+
+Input: -123
+Output: -321
+
+
+🚫 VARIATION 3: Reverse a Number WITHOUT USING LOOP
+
+
+🧠 LOGIC
+
+Convert number → string → reverse → convert back
+
+CODE
+
+
+def reverse_without_loop(num):
+    sign = -1 if num < 0 else 1
+    num = abs(num)
+    return sign * int(str(num)[::-1])
+
+
+num = int(input("Enter number: "))
+print("Reversed number:", reverse_without_loop(num))
+
+
+
+VARIATION 4: Reverse a Number USING RECURSION
+
+
+
+🧠 LOGIC
+
+Last digit goes first
+
+Reduce number recursively
+
+CODE
+
+def reverse_recursive(num, rev=0):
+    if num == 0:
+        return rev
+    return reverse_recursive(num // 10, rev * 10 + num % 10)
+
+
+num = int(input("Enter number: "))
+print("Reversed number:", reverse_recursive(abs(num)))
+
+🔍 EXAMPLE
+
+Input: 123
+Output: 321
+
+
+
+
+
